@@ -1,0 +1,11 @@
+Varun Kohli (vkohli)
+Rishabh Singh (rasingh)
+Carlos Gil (cgil)
+
+Disassembly Questions
+1. The entry point address of hello is 0x82dc.
+2. abort is the first function branched to in the program.
+3. The hello-d.txt shows all of the executable sections whereas the hello-D.txt shows the executable sections, data sections, and other preinitialized sections not used directly in the execution of the program.
+4. Yes the interpretation is correct. It is a hex encoding of the read-only data that we used. In this case, it means the string "Hello world!".
+
+
