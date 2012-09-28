@@ -1,0 +1,9 @@
+Varun Kohli (vkohli)
+Carlos Gil (cgil)
+Rishabh Singh ()
+
+1. There are two files, crimpers and wire. crimpers just has the number 42 and wire contains the word "strippers".
+
+2. The userid is ksubrama.
+
+3. They committed on Sept 17, 2008 at 7:52. The commit message was "Pins!". 
