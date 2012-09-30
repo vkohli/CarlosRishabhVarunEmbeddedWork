@@ -33,6 +33,11 @@ int main()
   return 0;
 }
 
+/** 
+ *  Basically used to confirm that the array generated was
+ *  in fact correct, and then also find the single method
+ *  via brute force to compare to our optimized outputs.
+ */
 void verify(int *arr, int len) {
   int i, j;
   int *temparr = calloc(N+1,sizeof(int));
