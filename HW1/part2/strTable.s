@@ -1,3 +1,10 @@
+# Carlos Gil
+# Varun Kohli
+# Rishabh Singh
+# 1) reworked the code so we didn't need to initially initially and move data into new registers
+# 2) removed dead code in L9 that was repeated in L7
+# 3) implemented a binary search for moding with 23 by subtracting a larger multiple of 23
+#    if the ASCII of the char was greater than 69, saving several loops 
 	.file	"part1-strTable.c"
 	.text
 	.align	2
@@ -13,7 +20,7 @@ strTable:
 .L9:
 	ldrb	ip, [r1, r4]	@ zero_extendqisi2  @ remove duplicate code in L7 and useless r3
 .L7:
-	cmp ip, #69				@ Pseudo binary search for char
+	cmp ip, #69		@ Pseudo binary search for char
 	subge ip, ip, #69
 	sublt ip, ip, #23
 	cmp	ip, #22
