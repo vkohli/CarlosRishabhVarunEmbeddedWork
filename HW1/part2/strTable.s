@@ -1,10 +1,11 @@
-# Carlos Gil
-# Varun Kohli
-# Rishabh Singh
-# 1) reworked the code so we didn't need to initially initially and move data into new registers
-# 2) removed dead code in L9 that was repeated in L7
-# 3) implemented a binary search for moding with 23 by subtracting a larger multiple of 23
-#    if the ASCII of the char was greater than 69, saving several loops 
+	# Carlos Gil
+	# Varun Kohli
+	# Rishabh Signh
+	# reworked the code so we didn't need to initially move data into new registers
+	# removed dead code in L9 which was repeated in L7
+	# removed dead Load in L13 
+	# created a binary search in L7 for moving by 23 by subtracting a larger multiple of 23
+	# if the ASCII of the char was greater than 69, saving several loops
 	.file	"part1-strTable.c"
 	.text
 	.align	2
@@ -18,17 +19,16 @@ strTable:
 	cmp	r4, r3	@ swapped r5 and r0, r0 and r3, r3 and r5 to remove move instructions
 	bge	.L11
 .L9:
-	ldrb	ip, [r1, r4]	@ zero_extendqisi2  @ remove duplicate code in L7 and useless r3
+	ldrb	ip, [r1, r4]	@ zero_extendqisi2 remove duplicate code in L7 and useless r3
 .L7:
-	cmp ip, #69		@ Pseudo binary search for char
-	subge ip, ip, #69
-	sublt ip, ip, #23
+	cmp 	ip, #69		@ Pseudo binary search for char
+	subge 	ip, ip, #69	@ subtracting 69, a larger multiple of 23 which speed up 
+	sublt 	ip, ip, #23	@ mod 23 for larger values
 	cmp	ip, #22
 	bgt	.L7
 .L13:
 	cmp	ip, r2
-	bgt	.L4
-	ldrb	r5, [r0, ip]	@ zero_extendqisi2
+	bgt	.L4		@ remove dead load that was never used
 	ldrb	r6, [r1, r4]	@ zero_extendqisi2
 	cmp	r3, r6
 	strneb	r6, [r0, ip]
