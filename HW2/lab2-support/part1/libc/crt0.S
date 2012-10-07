@@ -9,4 +9,9 @@
 
 	.global	_start
 _start:
-	@ Needs more code.
+	r0 -> argc
+	sp+4 -> r1
+	store return address r14
+	call main
+	r0 -> return value from main
+	exit
