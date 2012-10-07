@@ -10,14 +10,15 @@
 
         .global read
 read:
-		stmfd !sp, {r4-r11, r14}
+        
+		stmfd !sp, {r4-r11, r14} @Push r4 - r11 into the registers (callee saved)
         swi READ_SWI
-        cmp r0, #0
+        cmp r0, #0 @Check if there is an error from the implementation
 		mov r9, #-1
 		mov r10, r0
-		mullt r0, r10, r9
-		ldrlt r8, =errno
-		strlt r0, [r8]
-		movlt r0, #-1
-		ldmfd	sp!, {r4-r11, r14}
+		mullt r0, r10, r9 @If there is an error, the libc returns the errno.
+		ldrlt r8, =errno @Set the pointer of errno into r8
+		strlt r0, [r8] @Push the errno from libc into the errno locatio
+		movlt r0, #-1 @set return status to -1 as there is an error
+		ldmfd	sp!, {r4-r11, r14} @pop previous values from stack
 		mov pc, lr
