@@ -10,6 +10,6 @@
 
         .global exit
 exit:
-		stmfd !sp, {r4-r11, r14}
+		stmfd !sp, {r1-r3}
         swi EXIT_SWI
-        ldmfd	sp!, {r4-r11, r14}
+        ldmfd	sp!, {r1-r3}

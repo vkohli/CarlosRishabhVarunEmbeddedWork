@@ -10,7 +10,7 @@
 
         .global read
 read:
-		stmfd !sp, {r4-r11, r14}
+		stmfd !sp, {r1-r3}
         swi READ_SWI
         cmp r0, #0
 		mov r9, #-1
@@ -19,5 +19,5 @@ read:
 		ldrlt r8, =errno
 		strlt r0, [r8]
 		movlt r0, #-1
-		ldmfd	sp!, {r4-r11, r14}
+		ldmfd	sp!, {r1-r3}
 		mov pc, lr
