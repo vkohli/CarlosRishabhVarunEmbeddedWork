@@ -13,9 +13,8 @@
 _start:	
 	ldr r0, [sp]
 	ldr r1, [sp, #4]			@ dereference the first argv value, we can use the address to find the other argv values
-	str r14, [sp]				@ store return address r14
-	b   main					@ r0 -> return value from main
-	b exit
+	bl  main					@ r0 -> return value from main
+	b 	exit
 
 
 	
