@@ -2,7 +2,7 @@
 @
 @ Authors: Carlos Gil cgil@andrew.cmu.edu                                                      
 @          Varun Kohli vkohli@andrew.cmu.edu    
-@		   Rishabh Signh rsignh@cmu.edu   
+@	   Rishabh Signh rsignh@cmu.edu   
 @ Date:    9/5/2012 6:30pm
 #include <bits/swi.h> 
         .file   "exit.S"
@@ -10,6 +10,5 @@
 
         .global exit
 exit:
-		stmfd !sp, {r1-r3}
         swi EXIT_SWI
-        ldmfd	sp!, {r1-r3}
+

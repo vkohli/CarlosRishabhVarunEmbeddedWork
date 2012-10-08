@@ -6,15 +6,13 @@
 @
 @ Date:    The current time & date
 
-#include <swi.h>
-
 	.file	"crt0.S"
 	.text
 	
 	.global	_start
 _start:	
-	mov r0, [sp]
-	mov r1, [sp, #4]@dereference the first argv value, we can use the address to find the other argv values
+	ldr r0, [sp]
+	ldr r1, [sp, #4]@dereference the first argv value, we can use the address to find the other argv values
 	@store return address r14
 	str r14, [sp]
 	@call main
@@ -22,4 +20,6 @@ _start:
 	@r0 -> return value from main
 	@exit
 	b exit
+
+
 	
