@@ -12,9 +12,9 @@
 	.global	_start
 _start:	
 	ldr r0, [sp]
-	ldr r1, [sp, #4]			@ dereference the first argv value, we can use the address to find the other argv values
-	bl  main					@ r0 -> return value from main
-	b 	exit
+	add r1, sp, #4			@ getting a pointer value to argv
+	bl  main			@ r0 -> return value from main
+	b   exit
 
 
 	
