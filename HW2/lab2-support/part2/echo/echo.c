@@ -1,13 +1,17 @@
 /** @file echo.c
  *
- * @author  Harry Q Bovik (Change this!)
- * @date    The current date
+ * @author  Carlos Gil : cgil
+ *			Varun Kohli : vkohli
+ *			Rishabh Singh : rsingh
+ * @date    10/20/2012
  */
 
 
 int main(int argc, char** argv) {
 
-	/* Put your code here */
+	if ( argc > 0 ) {
+		puts(argv[1]);
+	}
 
-	return -255;
+	return 0;
 }
