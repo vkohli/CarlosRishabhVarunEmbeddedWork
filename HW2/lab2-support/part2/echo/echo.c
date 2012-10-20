@@ -6,6 +6,7 @@
  * @date    10/20/2012
  */
 
+#include <exports.h>
 
 int main(int argc, char** argv) {
 
