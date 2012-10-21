@@ -31,8 +31,8 @@ mov r3, r1				@ get a reference to r1
 cmp r2, #0
 blte .loadProgram		@ no more arguments to push
 stmfd    sp!, {r3}		@ push argument to stack
-add r3, #4				@ get next array value in argv
-sub r2, #1				@ subtract from argument counter
+add r3, r3, #4				@ get next array value in argv
+sub r2, r2, #1				@ subtract from argument counter
 
 @ Jump to a loaded user program at address 0xa2000000.
 .loadProgram
