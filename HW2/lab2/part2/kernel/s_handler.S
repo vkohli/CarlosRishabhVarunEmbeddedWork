@@ -15,7 +15,7 @@
 	MOV  r1, sp  				@ pointer to parameters on stack  
 	LDR  r0, [lr, #-4]  		@ extract the SWI number  
 	BIC  r0,r0,#0xff000000 		@ get SWI # by bit-masking
-	BL  C_SWI_Handler  			@ goto handler (see prev lecture)   
+	BL  C_SWI_Handler  			@ goto handler   
 	LDR  r2, [sp, #14*4]  		@ restore SPSR (NOT “sp!”) 
 	MSR  spsr, r2      			@ restore SPSR from r2  
 	LDMFD  sp!, {r0-r12, lr} 	@ unstack users registers  
