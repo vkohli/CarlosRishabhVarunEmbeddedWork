@@ -30,19 +30,19 @@ int main(int argc, char *argv[]) {
 //0x00000a20 is where we overwrite
 unsigned install_handler(unsigned location, unsigned int *vector)
 {
-  unsigned offset;
+  //unsigned offset;
   unsigned vec, oldvec;
   
-  offset = ((unsigned) location - (unsigned) vector - 0x8);
+  /* offset = ((unsigned) location - (unsigned) vector - 0x8);
   printf("offset: %d\n", offset);
-  /* if (offset & 0xFFFFF000) 
+   if (offset & 0xFFFFF000) 
     {
       puts("Installation of handler failed\n");
       return 0;
       //      exit(0);
       }*/
 
-  vec = (offset | 0xe59FF000);
+  vec = 0xe51FF004;
   oldvec = *vector;
   *vector = vec;
   return (oldvec);
