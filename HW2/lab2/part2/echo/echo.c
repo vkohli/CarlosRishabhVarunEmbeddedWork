@@ -6,13 +6,11 @@
  * @date    10/20/2012
  */
 
-#include <exports.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 int main(int argc, char** argv) {
 
-	if ( argc > 0 ) {
-		puts(argv[1]);
-	}
-
-	return 0;
+  write(1, "FUCK THIS SHIT\n", 15);
+  return 0;
 }
