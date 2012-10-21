@@ -7,14 +7,23 @@
  *
  * Date:   10/17/12
  */
+#import <exports.h>
+
+void C_SWI_handler(unsigned swi_num, unsigned *regs);
+unsigned install_handler(unsigned location, unsigned int *vector);
+void setup(int argc, char *argv[]);
+unsigned s_handler();
 
 int main(int argc, char *argv[]) {
   
   unsigned *swivec = (unsigned *) 0xa20;
   unsigned *swiaddr = (unsigned *) 0xa24;
   
-  *swiaddr = (unsigned) New_S_Handler;
+  *swiaddr = (unsigned) s_handler;
   install_handler((unsigned) swiaddr, swivec);
+
+  //  setup(argc, argv);
+  printf("end\n");
   return 0;
 }
 
@@ -25,11 +34,13 @@ unsigned install_handler(unsigned location, unsigned int *vector)
   unsigned vec, oldvec;
   
   offset = ((unsigned) location - (unsigned) vector - 0x8);
-  if (offset & 0xFFFFF000) 
+  printf("offset: %d\n", offset);
+  /* if (offset & 0xFFFFF000) 
     {
       puts("Installation of handler failed\n");
-      exit(0);
-    }
+      return 0;
+      //      exit(0);
+      }*/
 
   vec = (offset | 0xe59FF000);
   oldvec = *vector;
@@ -42,21 +53,22 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
   switch(swi_num) {
   //exit
   case 0x900001: 
-    exit(regs[0]);
+    printf("exit!\n");
     break;
 
   //read
   case 0x900003:
-    
+    printf("read!\n");
     break;
 
   //write
-  case 2:
+  case 0x900004:
+    printf("write\n");
     break;
 
   default:
-    puts("Invalid swinumber: %d\n", swi_num);
-    exit(0x0badc0de);
+    printf("Invalid swinumber: %d\n", swi_num);
+    //exit(0x0badc0de);
   }
 }
 // Todo
