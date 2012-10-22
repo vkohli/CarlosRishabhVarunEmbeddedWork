@@ -19,6 +19,6 @@ s_handler:
 	BL  C_SWI_handler  			@ goto handler   
 	LDR  r2, [sp, #14*4]  		@ restore SPSR (NOT “sp!”) 
 	MSR  spsr, r2      			@ restore SPSR from r2  
-	LDMFD  sp!, {r1-r12, lr} 	@ unstack users registers  
-	ADD  sp, sp, #8        		@ remove space used to store SPSR  
+	LDMFD  sp!, {r0-r12, lr} 	@ unstack users registers  
+	ADD  sp, sp, #4        		@ remove space used to store SPSR  
 	MOVS  pc, lr  				@ return from handler

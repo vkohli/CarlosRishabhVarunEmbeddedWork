@@ -16,13 +16,13 @@ unsigned s_handler();
 
 int main(int argc, char *argv[]) {
   
-  unsigned *swivec = (unsigned *) 0xa20;
+  unsigned int *swivec = (unsigned *) 0xa20;
   unsigned *swiaddr = (unsigned *) 0xa24;
   
-  *swiaddr = (unsigned) s_handler;
+  *swiaddr = (unsigned) &s_handler;
   install_handler((unsigned) swiaddr, swivec);
 
-  //  setup(argc, argv);
+  setup(argc, argv);
   printf("end\n");
   return 0;
 }
