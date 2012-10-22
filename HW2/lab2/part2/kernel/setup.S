@@ -6,11 +6,6 @@
 @		  Rishahb Sinhg <cgil@andrew.cmu.edu>
 @ Date:   10/20/2012 3:10 pm
 
-//2. Switch to user mode with IRQs & FIQs masked.
-//3. Setup a full descending user mode stack (with the stack top at 0xa3000000).
-//4. Push U-Boot’s argc & argv on the user stack.
-//5. Jump to a loaded user program at address 0xa2000000.
-
 .global setup
 	
 setup:	
@@ -34,6 +29,7 @@ setup:
 	stmfd    sp!, {r4}	@ push argument to stack
 	add r3, r3, #4		@ get next array value in argv
 	sub r2, r2, #1		@ subtract from argument counter
+	b .loadStack
 
 	@ Jump to a loaded user program at address 0xa2000000.
 .loadProgram:
