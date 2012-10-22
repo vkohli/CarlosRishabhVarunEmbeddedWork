@@ -51,7 +51,7 @@ mov r3, [r1]			@ get a reference to r1
 
 .loadStack
 cmp r2, #0
-blte .loadProgram			@ no more arguments to push
+ble .loadProgram			@ no more arguments to push
 ldr r4, [r3]				@ get the value stored at r3 (r3 is an index into the argv array)
 stmfd    sp!, {r4}			@ push argument to stack
 add r3, r3, #4				@ get next array value in argv
