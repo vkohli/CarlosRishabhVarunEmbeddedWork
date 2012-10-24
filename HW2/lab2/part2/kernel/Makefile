@@ -2,7 +2,7 @@ PREFIX  = arm-linux-
 CC      = $(PREFIX)gcc
 OBJCOPY = $(PREFIX)objcopy
 CFLAGS  = -O2 -ffixed-r8 -ffreestanding -Wall -Werror -nostdinc \
-          -I ../uboot/include -I include
+          -I ../uboot/include -I include -g
 ASFLAGS = -nostdinc -I ../uboot/include -I include
 LDFLAGS = -nostdlib -Wl,-N,-Ttext,$(LOAD_ADDR)
 

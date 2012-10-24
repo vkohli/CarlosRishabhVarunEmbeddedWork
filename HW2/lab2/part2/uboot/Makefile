@@ -1,6 +1,6 @@
 PREFIX  = arm-linux-
 CC      = $(PREFIX)gcc
-CFLAGS  = -O2 -ffixed-r8 -ffreestanding -Wall -Werror -nostdinc -I include
+CFLAGS  = -O2 -ffixed-r8 -ffreestanding -Wall -Werror -nostdinc -I include -g
 
 default: stubs.o
 
