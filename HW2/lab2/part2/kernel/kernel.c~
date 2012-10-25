@@ -16,14 +16,19 @@
 #define SDRAMLOW 0xA0000000
 #define SDRAMHIGH 0xA3FFFFFF
 #define ROMLOW 0x0
-#define ROMHIGH 0x00FFFFFF
+#define ROMHIGH 0xFFFFFF
 
 void C_SWI_handler(unsigned swi_num, unsigned *regs);
-void setup(int argc, char *argv[]);
+int setup(int argc, char *argv[]);
 unsigned s_handler();
 int check_range(unsigned int addr, int count, unsigned int low, unsigned int high);
 ssize_t read_syscall(int fd, char* buf, int count);
+ssize_t write_syscall(int fd, char* buf, int count);
+void exitcall(int exitStatus);
 
+/**
+ * Installs handler, calls stack setup, restores handler.
+ */
 int main(int argc, char *argv[]) {
 
   unsigned int swiVecInstr;
@@ -31,11 +36,13 @@ int main(int argc, char *argv[]) {
   unsigned int swiVecAddr;
   unsigned int registers, offset, offsetSign, opcode;
   unsigned int savedInstrOne, savedInstrTwo;
-
+  int exitStatus;
+  
   // location
   swiVecAddr = 0x8;
   swiVecInstr = *(unsigned int *) swiVecAddr;
   
+  //get information from encoding
   offset = (swiVecInstr & 0xFFF);
   registers = ((swiVecInstr >> 12) & 0xFF);
   offsetSign = (swiVecInstr >> 23) & 1;
@@ -67,36 +74,33 @@ int main(int argc, char *argv[]) {
   // install our handler
   *(unsigned int *)swiHandAddr = (unsigned) LDRCONST;
   *(unsigned int *)(swiHandAddr+4) = (unsigned) &s_handler;
-  printf("saddr: %u/sinstr: %u\n", *(unsigned int *) swiHandAddr,
-	 *(unsigned int *) (swiHandAddr+4));
 
   // call stack/usermode setup function
-  setup(argc-1, &argv[1]);
-
+  exitStatus= setup(argc, argv);
   //restore old swiHandler
   *(unsigned int*) swiHandAddr = savedInstrOne;
   *(unsigned int*) (swiHandAddr+4) = savedInstrTwo;
-  printf("saddr: %u/sinstr: %u\n", *(unsigned int *) swiHandAddr,
-	 *(unsigned int *) (swiHandAddr+4));
-  return 0;
+  return exitStatus;
 }
 
-
+/**
+ * handles system_calls
+ */
 void C_SWI_handler(unsigned swi_num, unsigned *regs)
 {
   char* buf;
   int fd;
   int count;
+  int exitStatus;
 
   switch(swi_num) {
   //exit
   case 0x900001: 
-    printf("exit!\n");
-    return;
+    exitStatus = regs[0];
+    exitcall(exitStatus);
 
-  //read
+  //read, check for errors, else call the helper
   case 0x900003:
-    printf("read!\n");
     fd = regs[0];
     buf = (char *) regs[1];
     count = regs[2];
@@ -105,40 +109,55 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
     if(fd != STDIN_FILENO)
       {
        regs[0] = -EBADF;
-       return;
+       break;
       }
     
     //check the range
-    if (!check_range((unsigned int)&buf, count, (unsigned) SDRAMLOW, (unsigned) SDRAMHIGH))
+    if ((unsigned)&buf < (unsigned)SDRAMLOW || 
+	(unsigned)&buf+count > (unsigned)SDRAMHIGH)
+      {
+	regs[0] = -EFAULT;
+	break;
+      }
+    regs[0] = read_syscall(fd, buf, count);
+    break;
+
+  //write, check for errors else call the helper
+  case 0x900004:
+    fd = regs[0];
+    buf = (char *) regs[1];
+    count = regs[2];
+    
+    //check fd
+    if(fd != STDOUT_FILENO) 
       {
 	regs[0] = -EBADF;
-	return;
+	break;
+      } 
+   //check range
+    if(!(((unsigned)&buf >= (unsigned)SDRAMLOW && 
+	(unsigned) &buf+count < (unsigned) SDRAMHIGH) ||
+       ((unsigned) &buf >= (unsigned) ROMLOW &&
+	(unsigned) &buf+count < (unsigned) ROMHIGH)))
+      {
+	regs[0] = -EFAULT;
+	break;
       }
-
-    regs[0] = read_syscall(fd, buf, count);
-    return;
-
-  //write
-  case 0x900004:
-    printf("write\n");
-    regs[0] = 0;
+    regs[0] = write_syscall(fd, buf, count);
     break;
 
   default:
     printf("Invalid swinumber: %d\n", swi_num);
-    regs[0] = ERRORCONST;
-    return;
+    exitcall(ERRORCONST);
   }
+  return;
 }
 
-int check_range(unsigned int addr, int count, unsigned int low, unsigned int high) 
-{
-  if((addr < low || addr > high) ||
-     ((addr+count) < low || (addr+count) > high)) return 0;
-  else return 1;
-}
-
-ssize_t readSysCall(int fd, char* buf, int count)
+/**
+ * Checks for special chars and reads in the buffer, 
+ * returns len of read buf.
+ */
+ssize_t read_syscall(int fd, char* buf, int count)
 {
   int bytesRead = 0;
   char charRead;
@@ -172,4 +191,23 @@ ssize_t readSysCall(int fd, char* buf, int count)
 	}
     }
   return bytesRead;
+}
+
+/**
+ * Writes buf to STDOUT, returns number of chars written.
+ */
+ssize_t write_syscall(int fd, char* buf, int count)
+{
+  int byteWritten = 0;
+  while(byteWritten < count) 
+    {
+      if(buf[byteWritten] == '\0')
+	return byteWritten;
+      else
+	{
+	  putc(buf[byteWritten]);
+	  byteWritten++;
+	}
+    }
+  return byteWritten;
 }

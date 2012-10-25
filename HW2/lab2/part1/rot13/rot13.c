@@ -14,60 +14,64 @@
 
 char *encryptish(char *input_str, ssize_t input_str_len)
 {
-	int i;
-	int test;
-
-	for (i = 0; i < input_str_len; i++)
+  int i;
+  int test;
+  
+  for (i = 0; i < input_str_len; i++)
+    {
+      test = (int)input_str[i];
+      //end of input string, in this case a newline
+      if (input_str[i] == '\n')
 	{
-		test = (int)input_str[i];
-		//end of input string, in this case a newline
-		if (input_str[i] == '\n')
-		{
-			break;
-		}
-		// first half of alphabet
-		if ((test >= 'A' && test <= 'M') || (test >= 'a' && test <= 'm'))
-		{
-			input_str[i] += 13;
-		}
-		//second half of alphabet
-		else if ((test >= 'N' && test <= 'Z') || (test >= 'a' && test <= 'z'))
-		{
-			input_str[i] -= 13;
-		}
-		//ignore all other characters and pass them a long 
-		else 
-		{
-			continue;
-		}
+	  break;
 	}
-	return input_str;
+      // first half of alphabet
+      if ((test >= 'A' && test <= 'M') || (test >= 'a' && test <= 'm'))
+	{
+	  input_str[i] += 13;
+	}
+      //second half of alphabet
+      else if ((test >= 'N' && test <= 'Z') || (test >= 'a' && test <= 'z'))
+	{
+	  input_str[i] -= 13;
+	}
+      //ignore all other characters and pass them a long 
+      else 
+	{
+	  continue;
+	}
+    }
+  return input_str;
 }
 
-int main()
+int main(int argc, char** argv)
 {
   char string[256];
   ssize_t bytesRead;
   char* output;
-
+  int i;
+  
+  //outputs each of the argv values.
+  for (i = 0; i < argc; i++) 
+    write(STDOUT_FILENO, (char *)argv[i], 256);
   while (1) //infinite loop for multiple inputs
     {
-		bytesRead = read(STDIN_FILENO, string, 256); //256 is a number large enough to hold most input strs	
-		if (!bytesRead) //no bytes read
-		{
-			exit(0);   
-		}
-		else if(bytesRead < 0) //error
-		{
-			exit(1);
-		}
-		output = encryptish(string, bytesRead);
-		if(write(STDOUT_FILENO, output, bytesRead) < 0) //if returns less than 0 its an error
-		{
-				exit(1);
-		}
+      bytesRead = read(STDIN_FILENO, string, 256); //256 is a number large enough to hold most input strs	
+      if (!bytesRead) //no bytes read
+	{
+	  exit(0);   
 	}
-	
+      else if(bytesRead < 0) //error
+	{
+	  exit(1);
+	}
+      output = encryptish(string, bytesRead);
+      if(write(STDOUT_FILENO, output, bytesRead) < 0) //if returns less than 0 its an error
+	{
+	  exit(1);
+	}
+    }
+  
   exit(0);
 }
 
