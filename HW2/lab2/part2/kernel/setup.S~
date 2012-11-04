@@ -1,0 +1,56 @@
+@ setup.S: setup the 
+@
+@ Author: Carlos Gil <cgil@andrew.cmu.edu>
+@	  Varun Kohli <vkohli@andrew.cmu.edu>
+@	  Rishabh Singh <rasingh@cmu.edu>
+@ Date:   10/20/2012 3:10 pm
+
+/*
+ * Switch to user mode with IRQs & FIQs masked.
+ * Setup a full descending user mode stack (with the stack top at 0xa3000000).
+ * Push U-Boot’s argc & argv on the user stack.
+ * Jump to a loaded user program at address 0xa2000000.
+ */
+.global setup
+.global exitcall
+	
+setup:
+	//store old registers/stack pointer to access later
+	stmfd sp!, {r1-r12, lr}
+	mov r1, #0xa0000000
+	str sp, [r1]
+
+	//switch to usermode
+	mrs r2, cpsr
+	bic  r2, r2, #0x1F
+	orr  r2, r2, #0xC0 	@ cpsr = nzcvqIFt_USER
+	msr cpsr, r2
+
+	//set stack pointer to 0xa3000000
+	mov sp, #0xa3000000
+
+	//get argc
+	mov r2, r0 // count = argc
+	
+//place argc and argcv's on stack
+.loadStack:
+	cmp r2, #0
+	ble .loadProgram //if count == 0, loadProgram
+	ldr r3, [r1, r2, LSL #2] //put argv[count] into r3
+	stmfd sp!, {r3}  //store argv[count] on stack
+	sub r2, r2, #1
+	b .loadStack 	//continue loop
+
+//jump to user loaded program at 0xa2000000
+.loadProgram:
+	stmfd sp!, {r0} //store argc on the stack
+	ldr r2, =0xa2000000
+	blx r2
+	swi 0x900001
+	
+//our exit swi essentially
+exitcall:	
+	mov r1, #0xa0000000
+	ldr sp, [r1]
+	ldmfd sp!, {r1-r12, lr}
+	mov pc, lr
