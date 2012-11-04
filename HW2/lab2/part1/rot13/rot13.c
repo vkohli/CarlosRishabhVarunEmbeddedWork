@@ -53,7 +53,10 @@ int main(int argc, char** argv)
   
   //outputs each of the argv values.
   for (i = 0; i < argc; i++) 
-    write(STDOUT_FILENO, (char *)argv[i], 256);
+    {
+      write(STDOUT_FILENO, (char *)argv[i], 256);
+      write(STDOUT_FILENO, "\n", 1);
+    }
   while (1) //infinite loop for multiple inputs
     {
       bytesRead = read(STDIN_FILENO, string, 256); //256 is a number large enough to hold most input strs	

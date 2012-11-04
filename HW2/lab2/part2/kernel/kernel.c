@@ -57,13 +57,15 @@ int main(int argc, char *argv[]) {
    * the load bit set, return an error. Also if the offset
    * is set to be negative.
    */
-  if (registers != 0xFF || !offsetSign ||
+  if (registers != 0xFF || 
       (opcode != 0xe51 && opcode != 0xe59)) 
     {
       printf("Unrecognized instruction: %u @ 0x08\n", swiVecInstr);
       return ERRORCONST;
     }
 
+  if !(offsetSign) offset = -1 * offset;
+	
   // this is the address of the swiHandler
   swiHandAddr = *(unsigned int *)(offset+swiVecAddr+0x8);
   
@@ -76,7 +78,7 @@ int main(int argc, char *argv[]) {
   *(unsigned int *)(swiHandAddr+4) = (unsigned) &s_handler;
 
   // call stack/usermode setup function
-  exitStatus= setup(argc-1, &argv[1]);
+  exitStatus= setup(argc, argv);
   //restore old swiHandler
   *(unsigned int*) swiHandAddr = savedInstrOne;
   *(unsigned int*) (swiHandAddr+4) = savedInstrTwo;

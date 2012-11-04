@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
       buf = argv[i];
       if (write(fd, buf, count) < 0) 
 	exit(1);
+      write(fd, "\n", 1);
     }
   return 0;
 }
