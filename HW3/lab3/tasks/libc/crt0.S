@@ -2,8 +2,11 @@
  *
  * @brief Execution startup routine
  *
- * @author Mike Kasick <mkasick@andrew.cmu.edu>
- * @date   Sun, 07 Oct 2007 01:51:29 -0400
+ * @author Varun Kohli <vkohli@andrew.cmu.edu>
+ *		Carlos Gil <cgil@andrew.cmu.edu>
+ *		Rishabh Singh <rasingh@cmu.edu>
+ *
+ * @date   11/1/12
  */
 
 #include <asm.h>
@@ -11,4 +14,7 @@
 	.file "crt0.S"
 
 FUNC(_start)
-	@ needs code.  Put your names at the top.
+	ldr r0, [sp]
+	add r1, sp, #4
+	bl  main
+	b   exit
