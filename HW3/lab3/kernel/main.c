@@ -5,6 +5,10 @@
 #include <arm/interrupt.h>
 #include <arm/timer.h>
 
+#include <bits/fileno.h>
+#include <bits/errno.h>
+#include <types.h>
+
 #define ERRORCONST 0x0BADC0DE
 #define LDRCONST 0xE51FF004
 #define SDRAMLOW 0xA0000000
@@ -13,7 +17,14 @@
 #define ROMHIGH 0xFFFFFF
 
 uint32_t global_data;
-void get_handler_addr(unsigned int swiVecAddr);
+
+void C_SWI_handler(unsigned swi_num, unsigned *regs);
+int setup_user(int argc, char *argv[]);
+unsigned s_handler();
+ssize_t read_syscall(int fd, char* buf, int count);
+ssize_t write_syscall(int fd, char* buf, int count);
+unsigned int get_handler_addr(unsigned int swiVecAddr);
+void exitcall(int exitStatus);
 
 int kmain(int argc, char** argv, uint32_t table)
 {
@@ -42,12 +53,12 @@ int kmain(int argc, char** argv, uint32_t table)
 	
 	//restore old swiHandler
 	*(unsigned int*) swiHandAddr = savedSwiOne;
-	*(unsigned int*) (swiHandAddr+4) = savedInstrTwo;
+	*(unsigned int*) (swiHandAddr+4) = savedSwiTwo;
 
 	return exitStatus;
 }
 
-void install_handler(unsigned int swiVecAddr)
+unsigned int get_handler_addr(unsigned int swiVecAddr)
 {
   unsigned int swiVecInstr;
   unsigned int registers, offset, offsetSign, opcode;
@@ -133,10 +144,9 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
 	break;
       } 
    //check range
-    if(!(((unsigned)&buf >= (unsigned)SDRAMLOW && 
+    if(!((unsigned)&buf >= (unsigned)SDRAMLOW && 
 	(unsigned) &buf+count < (unsigned) SDRAMHIGH) ||
-       ((unsigned) &buf >= (unsigned) ROMLOW &&
-	(unsigned) &buf+count < (unsigned) ROMHIGH)))
+       ((unsigned) &buf+count < (unsigned) ROMHIGH))
       {
 	regs[0] = -EFAULT;
 	break;
