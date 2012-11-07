@@ -144,9 +144,10 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
 	break;
       } 
    //check range
-    if(!((unsigned)&buf >= (unsigned)SDRAMLOW && 
+    if(!(((unsigned)&buf >= (unsigned)SDRAMLOW && 
 	(unsigned) &buf+count < (unsigned) SDRAMHIGH) ||
-       ((unsigned) &buf+count < (unsigned) ROMHIGH))
+	 ((int)&buf >= (unsigned) ROMLOW &&
+	(unsigned) &buf+count < (unsigned) ROMHIGH)))
       {
 	regs[0] = -EFAULT;
 	break;
