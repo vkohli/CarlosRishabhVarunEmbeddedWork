@@ -1,0 +1,5 @@
+/home/parallels/Documents/Classes/18349/lab3/kernel/start.o:  \
+ /home/parallels/Documents/Classes/18349/lab3/kernel/start.S \
+  /home/parallels/Documents/Classes/18349/lab3/kernel/include/asm.h
+
+/home/parallels/Documents/Classes/18349/lab3/kernel/include/asm.h:
