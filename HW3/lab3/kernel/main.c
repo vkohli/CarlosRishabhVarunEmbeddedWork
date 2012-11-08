@@ -20,7 +20,7 @@
 #define IRQADDR 0x18
 
 uint32_t global_data;
-uint32_t system_time;
+volatile unsigned long system_time;
 
 void C_SWI_handler(unsigned swi_num, unsigned *regs);
 int setup_user(int argc, char *argv[]);
@@ -191,13 +191,10 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
       }
     regs[0] = write_syscall(fd, buf, count);
     break;
-
     //time
   case 0x900006:
     regs[0] = (unsigned long) system_time;
     break;
-
-    //sleep
   case 0x900007:
     millis = regs[0];
     sleep_syscall(millis);
@@ -267,9 +264,8 @@ ssize_t write_syscall(int fd, char* buf, int count)
 }
 
 void sleep_syscall(unsigned long millis){
-  unsigned int tempSysTime = (unsigned int) system_time;
-  printf("%08x\n", (unsigned int)read_cpsr());
-  while(system_time <= millis+tempSysTime);
+  unsigned long tempSysTime = system_time + millis;
+  while(system_time < tempSysTime);
   return;
 }
 
@@ -280,13 +276,10 @@ void sleep_syscall(unsigned long millis){
  *IRQ is called. Since in our implementation the IRQ handler is called every
  *millisecond, we will be incrementing the global var 'time' and incrementing
  *the OSMR to the next millisecond. 
- */
+vv */
 void C_IRQ_handler()
 {
-  //printf("--Entered IRQ Handler--");
-
   /*Notes and Assumptions:
-   - "reg_read" and "reg_write" are function prototypes defined in kernel/include/arm/regs.h
 
    - The clock speed is 3.25 MHz. Hence, each millisecond (ms) is represented
    by 3250 clock cycles
@@ -295,17 +288,12 @@ void C_IRQ_handler()
 
    - The OSMR is initialized to 3250 so that the first interrupt
    called in the first millisecond*/
-
   /*Increment the time as this is executed every millisecond*/
-  system_time++;
-  printf("system_time = %d\n", system_time);
-  if (system_time % 1000 == 0) printf("time: %u\n", system_time);
-
+  system_time += 10;
+  
   /*Set OSMR to the next millisecond value*/
-  printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
   reg_write(OSTMR_OSMR_ADDR(0), 
-	    reg_read(OSTMR_OSMR_ADDR(0))+3250);
-  printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
+	    reg_read(OSTMR_OSMR_ADDR(0))+32500);
 
   /*disable the interrupt by placing 1 into OSSR*/
   reg_set(OSTMR_OSSR_ADDR, OSTMR_OSSR_M0);

@@ -9,8 +9,9 @@
 .global irq_handler 
 
 irq_handler:
-	STMFD  sp!, {r0-r12, lr} 	@ store users gp registers
 
+	STMFD  sp!, {r0-r12, lr} 	@ store users gp registers
+	
 	ldr ip, =R8_SAVED
 	ldr r8, [ip]
 

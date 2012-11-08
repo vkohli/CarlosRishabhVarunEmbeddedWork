@@ -8,15 +8,15 @@
 .extern C_SWI_handler 
 .global s_handler 
 
-s_handler:
-	mrs ip, cpsr
-	bic ip, ip, #0x80
-	msr cpsr, ip
-	
+s_handler:	
 //	SUB   sp, sp, #4 			@ leave room on stack for SPSR  
 
 	STMFD  sp!, {r0-r12, lr} 	@ store users gp registers
-	
+
+	mrs ip, cpsr
+	bic ip, ip, #0x80
+	msr cpsr, ip
+
 //	MRS  r2, spsr 				@ get SPSR into gp registers 
 //	STR  r2, [sp, #14*4]  		@ store SPSR above gp registers 
 
