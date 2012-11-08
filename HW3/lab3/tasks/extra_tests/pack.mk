@@ -1,0 +1,5 @@
+PROGS_SPLAT_OBJS := progress_bar.o
+PROGS_SPLAT_OBJS := $(PROGS_EXTRA_TESTS_OBJS:%=$(TDIR)/extra_tests/%)
+ALL_OBJS += $(PROGS_EXTRA_TESTS_OBJS)
+
+$(TDIR)/bin/extra_tests : $(TSTART) $(PROGS_EXTRA_TESTS_OBJS) $(TLIBC)
