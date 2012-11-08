@@ -1,0 +1,11 @@
+/home/parallels/Documents/Classes/18349/lab3/tasks/libc/string/strspn.o:  \
+ /home/parallels/Documents/Classes/18349/lab3/tasks/libc/string/strspn.c \
+  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h \
+  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h \
+  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h
+
+/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h:
+
+/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h:
+
+/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h:

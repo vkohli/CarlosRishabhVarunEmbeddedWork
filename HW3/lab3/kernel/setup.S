@@ -12,23 +12,33 @@
  * Jump to a loaded user program at address 0xa2000000.
  */
 #include <bits/swi.h>
-
-//#define SP_SAVED 0xa0000000
-#define USER_PROG_ADDR 0xa0000000
+#include <arm/psr.h>
 	
+#define USER_PROG_ADDR 0xa0000000
+#define IRQ_SP 0xa2000000
+
 .global setup_user
 .global exitcall
 	
 setup_user:
 	//store old registers/stack pointer to access later
-	stmfd sp!, {r4-r11, lr}
+	stmfd sp!, {r4-r7,r9-r11, lr}
 	ldr ip, =SP_SAVED
 	str sp, [ip]
+	ldr ip, =R8_SAVED
+	str r8, [ip]
 	
+	//switch to irqmode, then setup the IRQ stuff
+	mrs r2, cpsr
+	bic r2, r2, #0xF
+	orr r2, r2, #0x2
+	msr cpsr, r2
+	mov sp, #IRQ_SP
+
 	//switch to usermode
 	mrs r2, cpsr
-	bic  r2, r2, #0x1F
-	orr  r2, r2, #0xD0 	@ cpsr = nzcvqIFt_USER
+	bic  r2, r2, #0xFF
+	orr  r2, r2, #0x50 	@ cpsr = nzcvqiFt_USER
 	msr cpsr, r2
 
 	//set stack pointer to 0xa3000000
@@ -64,7 +74,8 @@ setup_user:
 exitcall:	
 	ldr r1, =SP_SAVED
 	ldr sp, [r1]
-	ldmfd sp!, {r4-r11, lr}
+	ldmfd sp!, {r4-r7,r9-r11, lr}
 	mov pc, lr
 
 	.comm SP_SAVED, 4, 4
+	.comm R8_SAVED, 4, 4

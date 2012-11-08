@@ -4,7 +4,7 @@
  *
  * @authors Varun Kohli <vkohli@andrew.cmu.edu>
  *		Carlos Gil <cgil@andrew.cmu.edu>
- *		Rishabh Singh <rasingh@andrew.cmu.edu>
+ *		Rishabh Singh <rasingh@cmu.edu>
  * @date   Thurs, 01 Nov 2012
  *
  */
@@ -16,4 +16,3 @@
 
 FUNC(exit)
 	swi EXIT_SWI
-	

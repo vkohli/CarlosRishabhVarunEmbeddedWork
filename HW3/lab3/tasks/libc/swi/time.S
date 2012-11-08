@@ -11,12 +11,12 @@
  */
 
 #include <asm.h>
-
+#include <bits/swi.h>
+	
 	.file "time.S"
 
 FUNC(time)
 	stmfd sp!, {r1-r12, lr}
-	swi TIME_SWI //the include file says this SWI is not linux compatible
-	//Now, we have our results, so pull from stack
+	swi TIME_SWI
 	ldmfd sp!, {r1-r12, lr}
 	mov pc, lr

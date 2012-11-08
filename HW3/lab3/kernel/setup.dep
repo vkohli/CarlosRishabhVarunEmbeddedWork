@@ -1,5 +1,8 @@
 /home/parallels/Documents/Classes/18349/lab3/kernel/setup.o:  \
  /home/parallels/Documents/Classes/18349/lab3/kernel/setup.S \
-  /home/parallels/Documents/Classes/18349/lab3/kernel/include/bits/swi.h
+  /home/parallels/Documents/Classes/18349/lab3/kernel/include/bits/swi.h \
+  /home/parallels/Documents/Classes/18349/lab3/kernel/include/arm/psr.h
 
 /home/parallels/Documents/Classes/18349/lab3/kernel/include/bits/swi.h:
+
+/home/parallels/Documents/Classes/18349/lab3/kernel/include/arm/psr.h:

@@ -16,3 +16,4 @@
 
 FUNC(exit)
 	swi EXIT_SWI
+	
