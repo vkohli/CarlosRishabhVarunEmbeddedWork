@@ -191,10 +191,13 @@ void C_SWI_handler(unsigned swi_num, unsigned *regs)
       }
     regs[0] = write_syscall(fd, buf, count);
     break;
+
     //time
   case 0x900006:
     regs[0] = (unsigned long) system_time;
     break;
+
+    //sleep
   case 0x900007:
     millis = regs[0];
     sleep_syscall(millis);
@@ -297,11 +300,13 @@ void C_IRQ_handler()
   system_time++;
   printf("system_time = %d\n", system_time);
   if (system_time % 1000 == 0) printf("time: %u\n", system_time);
+
   /*Set OSMR to the next millisecond value*/
   printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
   reg_write(OSTMR_OSMR_ADDR(0), 
 	    reg_read(OSTMR_OSMR_ADDR(0))+3250);
   printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
+
   /*disable the interrupt by placing 1 into OSSR*/
   reg_set(OSTMR_OSSR_ADDR, OSTMR_OSSR_M0);
 
