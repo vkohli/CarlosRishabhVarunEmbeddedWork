@@ -4,7 +4,7 @@
  *
  * @author Varun Kohli <vkohli@andrew.cmu.edu>
  *		Carlos Gil <cgil@andrew.cmu.edu>
- *		Rishabh Singh <rasingh@cmu.edu>
+ *		Rishabh Alaap Singh <rasingh@andrew.cmu.edu>
  * @date 11/1/12
  * 
  */
