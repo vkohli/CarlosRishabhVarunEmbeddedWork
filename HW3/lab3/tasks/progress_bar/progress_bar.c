@@ -1,8 +1,11 @@
-/** @file progress_bar.c
+/* File: progress_bar.c
  * Carlos gil : cgil
  * Varun Kohli : vkohli
  * Rishabh Singh : rasingh
- * @brief Creates a progress bar, compare time it should have taken to our perceived timer.
+ *
+ * Brief: This is our own test case for the SWI and IRQ handlers. This program
+ * creates a progress bar, based on input parameters of time. This is a good
+ * test as it involves the write and sleep syscalls of the SWI and IRQ Handlers.
  *
  * Links to libc.
  */
@@ -17,20 +20,20 @@ int main(int argc, char** argv)
 {    
   char input[BUFSIZE];
   char newInput[BUFSIZE];
-  //Temp time variable
+
+  /*Temp time variable*/
   unsigned int initialTime;
   
-  //Temp final time
+  /*Temp final time*/
   unsigned int timeDiff;
   
-  char c_time_string[BUFSIZE];
   int sizeRead;
   int totalTime;
   
   int timeSoFar = 0;
   int sleepTime;
   
-  write(STDOUT_FILENO, "Milliseconds to load: ", 22);
+  write(STDOUT_FILENO, "Milliseconds to load: ", 22); /*Prompt*/
   sizeRead = read(STDIN_FILENO, input, sizeof(input));
   totalTime = (int)atoi(input);
 
@@ -51,13 +54,12 @@ int main(int argc, char** argv)
     }
   write(STDOUT_FILENO, "\n", 1);
   
-  //End timer: total time taken
-  //Display time taken to enter input
+  /*End timer: total time taken*/
+  /*Display time taken to enter input*/
   
-  //Replace the bottom two lines
+  /*Replace the bottom two lines*/
   timeDiff = (unsigned int)(time() - initialTime);
-  sprintf(c_time_string, "Time elapsed: %ds\n", timeDiff );	
-  write(STDOUT_FILENO, c_time_string, sizeof(timeDiff));
-  write("\n");
+  printf("Time elapsed: %d\n", timeDiff);	
+ 
   return 0;
 }

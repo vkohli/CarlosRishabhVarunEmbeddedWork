@@ -1,8 +1,10 @@
-/** @file splat.c
+/*File: splat.c
  * Carlos Gil : cgil
  * Varun Kohli : vkohli
  * Rishabh Singh : rasingh
- * @brief Displays a spinning cursor.
+ * Brief: Displays a spinning cursor. Used as a test case for the IRQ Handler
+ * as it requires both read and write functions in conjunction with timer 
+ * functions.
  *
  * Links to libc.
  */
@@ -12,7 +14,7 @@
 
 int main(int argc, char** argv)
 {
-	// Creates a cursor by writing and deleting the characters |/-\ in a loop.
+  /* Creates a cursor by writing and deleting the characters |/-\ in a loop.*/
   while(1)
     {
       write(STDOUT_FILENO, "|", 1);
