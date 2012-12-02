@@ -1,6 +1,6 @@
  \
- /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/raise.o:  \
- /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/raise.c \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/stubs.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/stubs.c \
   /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/include/exports.h \
   /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/types.h \
   /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/stdarg.h \

@@ -1,11 +1,12 @@
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/string/strspn.o:  \
- /home/parallels/Documents/Classes/18349/lab3/tasks/libc/string/strspn.c \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/string/strspn.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/string/strspn.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/string.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/string.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h:

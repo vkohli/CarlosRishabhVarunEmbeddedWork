@@ -1,11 +1,12 @@
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdlib/atoi.o:  \
- /home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdlib/atoi.c \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdlib.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/ctype.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/inline.h
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdlib/atoi.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdlib/atoi.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdlib.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/ctype.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/inline.h
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdlib.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdlib.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/ctype.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/ctype.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/inline.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/inline.h:

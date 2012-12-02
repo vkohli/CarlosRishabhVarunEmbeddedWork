@@ -1,20 +1,21 @@
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdlib/strtol.o:  \
- /home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdlib/strtol.c \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdlib.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/ctype.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/inline.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdlib/strtol.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdlib/strtol.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdlib.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/ctype.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/inline.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/string.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdlib.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdlib.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/ctype.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/ctype.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/inline.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/inline.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/string.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/string.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h:

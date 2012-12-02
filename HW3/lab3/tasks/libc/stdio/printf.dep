@@ -1,23 +1,24 @@
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdio/printf.o:  \
- /home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdio/printf.c \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdio.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdarg.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/unistd.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/fileno.h \
-  /home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdio/doprnt.h
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdio/printf.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdio/printf.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdio.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdarg.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/unistd.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/fileno.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdio/doprnt.h
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdio.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdio.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/stdarg.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/stdarg.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/sys/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/sys/types.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/types.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/types.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/unistd.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/unistd.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/include/bits/fileno.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/include/bits/fileno.h:
 
-/home/parallels/Documents/Classes/18349/lab3/tasks/libc/stdio/doprnt.h:
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/tasks/libc/stdio/doprnt.h:
