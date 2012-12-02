@@ -11,7 +11,8 @@
  */
 
 #include <asm.h>
-
+#include <bits/swi.h>
+	
 	.file "sleep.S"
 
 FUNC(sleep)
