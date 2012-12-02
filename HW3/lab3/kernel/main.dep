@@ -1,0 +1,39 @@
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/main.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/main.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/include/exports.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/stdarg.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/include/_exports.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/psr.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/inline.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/reg.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/exception.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/interrupt.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/timer.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/fileno.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/errno.h
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/include/exports.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/types.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/stdarg.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/uboot/include/_exports.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/psr.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/inline.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/reg.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/exception.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/interrupt.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/timer.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/fileno.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/errno.h:

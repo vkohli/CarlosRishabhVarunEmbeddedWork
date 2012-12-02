@@ -1,0 +1,9 @@
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/setup.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/setup.S \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/swi.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/psr.h
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/bits/swi.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/psr.h:

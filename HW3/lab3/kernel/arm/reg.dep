@@ -1,0 +1,12 @@
+ \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/arm/reg.o:  \
+ /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/arm/reg.c \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/types.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/reg.h \
+  /home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/inline.h
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/types.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/arm/reg.h:
+
+/home/rishabh/git_18349/CarlosRishabhVarunEmbeddedWork/HW3/lab3/kernel/include/inline.h:

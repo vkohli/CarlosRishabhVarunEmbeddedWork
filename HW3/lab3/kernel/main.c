@@ -321,9 +321,35 @@ void sleep_syscall(unsigned long millis)
 void C_IRQ_handler()
 {
   /*Notes and Assumptions:
+<<<<<<< HEAD
+   - "reg_read" and "reg_write" are function prototypes defined in kernel/include/arm/regs.h
+
+   - The clock speed is 3.25 MHz. Hence, each millisecond (ms) is represented
+   by 3250 clock cycles
+
+   - There exists a global uint32_t var named "time" that starts at 0
+
+   - The OSMR is initialized to 3250 so that the first interrupt
+   called in the first millisecond*/
+
+  /*Increment the time as this is executed every millisecond*/
+  system_time++;
+  printf("system_time = %d\n", system_time);
+  // if (system_time % 1000 == 0) printf("time: %u\n", system_time);
+
+  /*Set OSMR to the next millisecond value*/
+  // printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
+  reg_write(OSTMR_OSMR_ADDR(0), 
+	    reg_read(OSTMR_OSMR_ADDR(0))+3250);
+  // printf("Hello: %u\n", reg_read(OSTMR_OSMR_ADDR(0)));
+
+  /*disable the interrupt by placing 1 into OSSR*/
+  reg_set(OSTMR_OSSR_ADDR, OSTMR_OSSR_M0);
+=======
    - The clock speed is 3.25 MHz. Hence, timer resolution of 10 milliseconds 
    is represented by 32500 clock cycles
    */
+>>>>>>> bf87f3906a3aeef2ec17983afda5933b817bafe4
 
   //only do it if interrupt is set and for a correct (m0) timer interrupt
   if(reg_read(OSTMR_OSSR_ADDR) & OSTMR_OSSR_M0
