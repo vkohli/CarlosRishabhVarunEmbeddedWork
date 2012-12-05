@@ -58,7 +58,27 @@ void dev_init(void)
  */
 void dev_wait(unsigned int dev __attribute__((unused)))
 {
+	/*---WRITTEN BY RISHABH---*/
+	/*NOTE: We are trusting the user to give us the correct dev number*/
 	
+	/*remove from runqueue*/
+	tcb_t *cur_tcb = get_cur_tcb(void);
+	runqueue_remove(cur_tcb);
+	
+	/*From the dev number, we get the sleep_queue*/
+	tsb_t *sleep_queue = devices[dev]->sleep_queue;
+	
+	/*append to that queue*/
+	tsb_t *temp = sleep_queue;
+	while (temp->sleep_queue != NULL)
+	{
+		temp = temp->sleep_queue;
+	}
+	
+	temp->sleep_queue = cur_tcb;
+	cur_tcb->sleep_queue = NULL;
+	
+	return;
 }
 
 

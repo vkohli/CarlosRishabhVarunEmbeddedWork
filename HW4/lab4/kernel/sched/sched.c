@@ -22,7 +22,7 @@ tcb_t system_tcb[OS_MAX_TASKS]; /*allocate memory for system TCBs */
 
 void sched_init(task_t* main_task  __attribute__((unused)))
 {
-	
+	/*Not needed. I believe I updated the scheduler within task_create- Rishabh*/
 }
 
 /**
@@ -50,6 +50,37 @@ static void __attribute__((unused)) idle(void)
  */
 void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  __attribute__((unused)))
 {
+	/*---WRITTEN BY RISHABH---*/
+	/*What this does is assigns a priority for each TCB in system_tcb, 
+	and from this point, for an index i, system_tcb[i] represents tasks[i] in the kernel*/
 	
+	/*Sanity check on the number of tasks that we have to allocate*/
+	assert(num_tasks < OS_MAX_TASKS);
+	
+	/*Set up TCBs for all tasks by assigning priorities. Because we
+	placed the tasks in ascending order of C, we know that system_tcb[i] represents
+	tasks[i] of the user.*/
+	/*Put the task in the runqueue (make it available for running)*/
+	for (i = 0; i < num_tasks; i++) /*NOTE: num_tasks may be lesser than OS_MAX_TASKS, so there can be free uninitialized TCBs*/
+	{
+		system_tcb[i]->native_prio = i; /*Priority 0 makes no sense??*/
+		system_tcb[i]->cur_prio = i;
+		system_tcb[i]->context.r4 = 0;
+		system_tcb[i]->context.r5 = 0;
+		system_tcb[i]->context.r6 = 0;
+		system_tcb[i]->context.r7 = 0;
+		system_tcb[i]->context.r8 = 0;
+		system_tcb[i]->context.r9 = 0;
+		system_tcb[i]->context.r10 = 0;
+		system_tcb[i]->context.r11 = 0;
+		system_tcb[i]->context.sp = (*tasks[i].stack_pos);
+		system_tcb[i]->context.lr = NULL; /*idk..?*/
+
+		runqueue_add(system_tcb[i], i);
+	}
+	
+	/*Set up the TCB for the idle task --> done above when i = 63, right?*/
+	
+	/*make the idle task schedulable --> idk what they're trying to say here*/
 }
 
