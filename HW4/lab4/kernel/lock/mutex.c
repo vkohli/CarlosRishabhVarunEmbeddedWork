@@ -62,6 +62,7 @@ int mutex_create(void)
 
 int mutex_lock(int mutex  __attribute__((unused)))
 {
+
 	int i = 0;
 	tcb_t* current_tcb = get_cur_tcb();
 	tcb_t* holding_tcb;
@@ -82,6 +83,14 @@ int mutex_lock(int mutex  __attribute__((unused)))
 	{
 		gtMutex[mutex].bLock = 1;
 		gtMutex[mutex]->pHolding_Tcb = current_tcb;
+		
+		//HLP after acquiring lock
+		if(HLP)
+		{
+			//Escalate priority
+			gtMutex[mutex].pHolding_Tcb.cur_prio = 0;
+		}
+		
 	}
 	else //It's locked, set to sleep until free
 	{
@@ -105,6 +114,15 @@ int mutex_unlock(int mutex  __attribute__((unused)))
 	{
 		return EDEADLOCK;
 	}
+	
+	
+	if(HLP)
+	{
+		//remove escalated priority
+		gtMutex[mutex].pHolding_Tcb.cur_prio = gtMutex[mutex].pHolding_Tcb.native_prio;
+	}
+	
+	
 	//Give possession to next thing in sleep queue or unlock if empty
 	if ( gtMutex[mutex].pSleep_queue == 0 ) //Empty queue so unlock
 	{
