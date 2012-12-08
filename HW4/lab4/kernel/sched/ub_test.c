@@ -29,8 +29,62 @@
  */
 int assign_schedule(task_t** tasks  __attribute__((unused)), size_t num_tasks  __attribute__((unused)))
 {
+	//Lookup for U(k) = 2^(1/k) - 1 
+	long u[12];
+	u[0] = -1;
+	u[1] = 1;
+	u[2] = 0.4142;
+	u[3] = 0.2599;
+	u[4] = 0.1892;
+	u[5] = 0.1486;
+	u[6] = 0.1224;
+	u[7] = 0.10408;
+	u[8] = 0.0905;
+	u[9] = 0.08;
+	u[10] = 0.071;
+	u[11] = 0.065;
+	
+	//U(k)
+	long uk;
+	
+	int i = 0;
+	
+	
+	//Get U(k)
+	if ( num_tasks < 12 )
+	{
+		uk = u[num_tasks];
+		
+	}
+	else
+	{
+		uk = u[11];
+	}
+	//No tasks
+	if (uk < 0)
+	{
+		return 0;
+	}
+	
+	int cTotal = 0;
+	unsigned long time = 0;
+	for(i = 0; i < num_tasks; i++)
+	{
+		time = (tasks[i].C + tasks[i].B)/tasks[i].T;
+		time += cTotal;
+		if (uk > time)
+		{
+			return 0;
+		}
+		else
+		{
+			cTotal += tasks[i].C / tasks[i].T;
+		}
+		
+	}
+	
 
-	return 1; // fix this; dummy return to prevent compiler warnings	
+	return 1; //Success
 }
 	
 
