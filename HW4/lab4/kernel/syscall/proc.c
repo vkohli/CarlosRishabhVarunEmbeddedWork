@@ -30,7 +30,7 @@ int task_create(task_t* tasks  __attribute__((unused)), size_t num_tasks  __attr
 	/*NOTE: Please change to appropriate error numbers, as mentioned in the API*/
 
 	if (tasks == NULL) return -1;
-	if ((num_tasks <= 0) && (num_tasks > 64)) return -1;
+	if ((num_tasks <= 0) || (num_tasks > 64)) return -1;
 	
 	for (i = 0; i < num_tasks; i++)
 	{
